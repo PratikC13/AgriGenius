@@ -1,0 +1,21 @@
+# === Frontend (AgriGenius) ===
+AgriGenius/node_modules/
+AgriGenius/build/
+AgriGenius/dist/
+AgriGenius/.env
+
+# === Backend (AgriGenius_api) ===
+AgriGenius_api/__pycache__/
+AgriGenius_api/venv/
+AgriGenius_api/.env
+AgriGenius_api/*.pyc
+
+# === IDE / OS ===
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# === Logs ===
+*.log
+
