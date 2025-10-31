@@ -1,111 +1,124 @@
 # AgriGenius
 
-AgriGenius is a comprehensive agricultural mobile application that combines modern technology with farming practices to help farmers make better decisions and improve their yield.
+AgriGenius is a mobile-first agricultural assistant that helps farmers plan and improve crop yields using machine learning, smart suggestions, and community-shared innovations. The project contains a React Native app, a Python backend, and a Jupyter notebook for ML model development.
 
 ## Project Structure
 
-The project consists of three main components:
+- `AgriGenius/` — React Native mobile app (screens, assets, firebase integration)
+- `AgriGenius_api/` — Python backend (API, Firebase Admin SDK)
+- `ML_Model/` — Dataset and Jupyter notebook used to build the yield prediction model
 
-### 1. Mobile Application (AgriGenius/)
-- React Native mobile app
-- Features user authentication
-- Multiple screens for different functionalities
-- Firebase integration for data management
+## Four Primary Features 
 
-### 2. Backend API (AgriGenius_api/)
-- Python-based backend server
-- Firebase Admin SDK integration
-- Handles API requests from the mobile app
+### 1) Yield Prediction
+- **What it does**: Predicts expected crop yield for a farmer's field for a given season
+- **Inputs**: 
+  - Crop type
+  - Historical yield data (if available)
+  - Soil parameters
+  - Location
+  - Planting date
+  - Weather data (optional)
+- **Outputs**: 
+  - Estimated yield (tonnes/hectare)
+  - Confidence interval
+  - Recommendations for improvement
+- **How it works**: 
+  - Uses ML model trained on `agri_dataset.csv`
+  - Considers historical data and environmental factors
+  - Provides data-driven yield forecasts
+- **Where to find**: `PredictYieldScreen.js`
 
-### 3. Machine Learning Model (ML_Model/)
-- Crop yield prediction model
-- Dataset: agri_dataset.csv
-- Jupyter Notebook for model development
+### 2) Crop Suggestion
+- **What it does**: Recommends suitable crops based on local conditions
+- **Inputs**:
+  - Soil type and quality
+  - Available irrigation
+  - Season/planting window
+  - Land size
+  - Farmer preferences
+- **Outputs**:
+  - Ranked list of suitable crops
+  - Success probability for each crop
+  - Care instructions
+- **How it works**:
+  - Analyzes soil and climate compatibility
+  - Uses ML to rank crop suitability
+  - Provides practical farming guidance
+- **Where to find**: `SuggestCropScreen.js`
 
-## Features
+### 3) Share Innovation
+- **What it does**: Allows farmers to share agricultural techniques and discoveries
+- **Inputs**:
+  - Innovation title
+  - Detailed description
+  - Photos/images (optional)
+  - Tags/categories
+  - Author information
+- **Outputs**:
+  - Published innovation post
+  - Confirmation of submission
+- **How it works**:
+  - Uses Firebase for storage
+  - Supports image uploads
+  - Makes content available to community
+- **Where to find**: `SubmitInnovationScreen.js`
 
-1. **User Authentication**
-   - Login functionality
-   - User registration/signup
-   - Profile management
+### 4) View Innovations
+- **What it does**: Browse and search community-shared farming innovations
+- **Inputs**:
+  - Search terms (optional)
+  - Category filters
+  - Sort preferences
+- **Outputs**:
+  - List of relevant innovations
+  - Detailed view of selected items
+  - Associated images and tips
+- **How it works**:
+  - Fetches data from Firebase
+  - Supports search and filtering
+  - Shows full innovation details
+- **Where to find**: `ViewInnovationsScreen.js`
 
-2. **Crop Management**
-   - Yield prediction
-   - Crop suggestions based on conditions
-   - Smart farming recommendations
-   - Future yield forecasting using historical data
+## Quick Setup
 
-3. **Future Yield Prediction**
-   - Advanced machine learning algorithms
-   - Historical data analysis
-   - Weather pattern consideration
-   - Soil quality impact assessment
-   - Predictive analytics for crop output
-
-4. **Innovation Platform**
-   - Submit agricultural innovations
-   - View shared innovations
-   - Community knowledge sharing
-
-## Screens
-
-- `HomeScreen`: Main dashboard
-- `LoginScreen`: User authentication
-- `SignupScreen`: New user registration
-- `PredictYieldScreen`: Crop yield predictions
-- `SuggestCropScreen`: Intelligent crop suggestions
-- `SubmitInnovationScreen`: Share farming innovations
-- `ViewInnovationsScreen`: Browse community innovations
-- `ProfileScreen`: User profile management
-
-## Technologies Used
-
-- **Frontend**:
-  - React Native
-  - Firebase Authentication
-  - JavaScript/JSX
-
-- **Backend**:
-  - Python
-  - Firebase Admin SDK
-  - RESTful API
-
-- **Machine Learning**:
-  - Python
-  - Jupyter Notebook
-  - Data Analysis Libraries
-
-## Getting Started
-
-1. Clone the repository
-2. Set up the development environment:
-   - Install Node.js and npm
-   - Set up React Native environment
-   - Install Python dependencies
-   - Configure Firebase credentials
-
-3. Install dependencies:
-```bash
-# Mobile App
+1. **Frontend (React Native)**
+```powershell
 cd AgriGenius
 npm install
-
-# Backend
-cd AgriGenius_api
-pip install -r requirements.txt
+npx react-native start
 ```
 
-4. Run the application:
-```bash
-# Start the mobile app
-cd AgriGenius
-npm start
-
-# Start the backend server
+2. **Backend (Python)**
+```powershell
 cd AgriGenius_api
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+pip install -r requirements.txt
 python App.py
 ```
 
+## Configuration
+
+Important: Firebase configuration files are excluded from git:
+- Create `AgriGenius/firebase.js` for mobile app Firebase config
+- Create `AgriGenius_api/firebase-adminsdk.json` for backend Firebase Admin
+
+## API Endpoints
+
+- Yield Prediction: `POST /predict`
+- Crop Suggestion: `POST /suggest-crops`
+- Share Innovation: `POST /innovations`
+- View Innovations: `GET /innovations`
+
 ## Contributing
 
-Feel free to submit issues and enhancement requests!
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## License
+
+This project is open source and available under the MIT License.
