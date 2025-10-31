@@ -33,8 +33,16 @@ The project consists of three main components:
    - Yield prediction
    - Crop suggestions based on conditions
    - Smart farming recommendations
+   - Future yield forecasting using historical data
 
-3. **Innovation Platform**
+3. **Future Yield Prediction**
+   - Advanced machine learning algorithms
+   - Historical data analysis
+   - Weather pattern consideration
+   - Soil quality impact assessment
+   - Predictive analytics for crop output
+
+4. **Innovation Platform**
    - Submit agricultural innovations
    - View shared innovations
    - Community knowledge sharing
